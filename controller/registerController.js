@@ -1,4 +1,4 @@
-const UserSchema = require('../model/User')
+const User = require('../model/User')
 const bcrypt = require('bcrypt') 
 
 
@@ -13,7 +13,7 @@ const registerSubmit = async (req, res) => {
         const salt = await bcrypt.genSalt(12)
         const hashedPassword = await bcrypt.hash(password, salt)
 
-        await new UserSchema({
+        await new User({
             username: username,
             email: email,
             password: hashedPassword

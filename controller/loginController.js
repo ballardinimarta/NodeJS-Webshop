@@ -1,4 +1,4 @@
-const UserSchema = require('../model/User') 
+const User = require('../model/User') 
 const bcrypt = require('bcrypt') 
 const jwt = require('jsonwebtoken') 
 require('dotenv').config()
@@ -12,7 +12,7 @@ const loginSubmit = async (req, res) => {
     const {email, password} = req.body 
 
     try {
-        const user = await UserSchema.findOne({email: email}) 
+        const user = await User.findOne({email: email}) 
         if(!user) return res.redirect('/register')
     
         const validUser = await bcrypt.compare(password, user.password) 
@@ -34,7 +34,12 @@ const loginSubmit = async (req, res) => {
     }
 } 
 
+const logOut = async (req, res) => {
+    res.clearCookie('jwToken').redirect('/login')
+}
+
 module.exports = {
     loginRender,
-    loginSubmit
+    loginSubmit,
+    logOut
 } 

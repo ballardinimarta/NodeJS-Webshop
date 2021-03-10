@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser")
 const cookieParser = require('cookie-parser')
 const userRoute = require("./routes/userRoute")
+const productRoute = require("./routes/productRoute")
 require("dotenv").config();
 
 
@@ -26,6 +27,7 @@ app.use(cookieParser())
 
 app.set("view engine", "ejs");
 app.use("/", userRoute);
+app.use(productRoute);
 
 
 mongoose.connect(process.env.DATABASE_URL, 

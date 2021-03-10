@@ -1,7 +1,8 @@
-<h1>Welcome to our webshop</h1>
+<h1>Hi Welcome to our webshop</h1> <a href="/logout">Logout</a>
+
 <h2>Our products</h2>
 <% products.forEach(product => { %>
-    <div> 
+    <div style="border: 1px solid black; width: 80%;"> 
         <div><%= product.image %></div>
         <h4><%= product.name %></h4>
         <h5><%= product.description %></h5>
@@ -10,3 +11,6 @@
         <button>Add to cart</button>
     </div><br>
 <% }) %>
+
+
+
