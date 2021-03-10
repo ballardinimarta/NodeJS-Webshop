@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <form action="/admin" method="post">
+        <h2>Add a product!</h2>
+        <input type="text" name="name" id="" placeholder="name" required>
+        <input type="text" name="image" id="" placeholder="image url" required>
+        <input type="number" name="price" id="" placeholder="price" required>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
+        <button type="submit">Add product!</button>
+    </form>
+
+    <div>
+        <h2>My Products</h2>
+        <% for( let i = 0; i < products.length; i++ ) { %>
+            <% if (products[i]._id == id) { %>
+                <form action="/admin/edit/<%= id %> " method="post">
+                    <input type="text" name="image" id="" value="<%= products[i].image %>" required>
+                    <input type="text" name="name" id="" value="<%= products[i].name %>" required>
+                    <input type="number" name="price" id="" value="<%= products[i].price %>" required>
+                    <textarea name="description" id="" cols="30" rows="10"><%= products[i].description %></textarea>
+                    <button type="submit">Edit product!</button>
+                </form>
+            <% } else { %>
+            <div>
+                <img style="height: 200px;" src="<%= products[i].image %> ">
+                <h3><%= products[i].name %></h3>
+                <p><%= products[i].price %> kr</p>
+                <p><%= products[i].description %></p>
+                <a href="/admin/edit/<%= products[i]._id %> ">Edit this product</a>
+                <a href="/admin/delete/<%= products[i]._id %> ">Delete this product</a>
+
+            </div>
+            <% } %>
+        <% } %>
+    </div>
+        
+</body>
+</html>
