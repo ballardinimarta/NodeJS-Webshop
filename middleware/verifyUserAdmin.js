@@ -7,9 +7,7 @@ const verifyTokenAdmin = (req, res, next) => {
 
     const validUser = jwt.verify(userToken, process.env.SECRET_KEY)
     if(!validUser.user.role) return res.render("login_form.ejs", {err:"You have no authorisation as an admin"})
-    req.user = validUser;
-    res.redirect("/admin");
-    
+    req.user = validUser;    
     next()
 }
 

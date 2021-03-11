@@ -1,4 +1,5 @@
 const Product = require("../model/Product");
+const User = require("../model/User");
 
 const adminHomeRender = async(req, res) => {
     try {
@@ -11,11 +12,14 @@ const adminHomeRender = async(req, res) => {
 }
 const adminAddProduct = async (req,res) => {
     try {
-        await new Product({
+        const user = await User.findOne({_id: req.user.user._id})
+        const product = await new Product({
             name: req.body.name,
-            image: req.body.image,
+            image: "/uploads/" + req.file.filename,
+            description: req.body.description,
             price: req.body.price
         }).save();
+        user.addToMyProductList(product._id);
         res.redirect("/admin")
     } catch (error) {
         console.log(error);

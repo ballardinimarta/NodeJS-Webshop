@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     role: String,
     token: String,
     tokenExpiration: Date,
-    courseList: [{
+    myProductList: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "product"
     }]
