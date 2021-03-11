@@ -1,156 +1,165 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    body{
-        font-family: 'DM sans', sans-serif;
-        background:#F1F0EA;
-        text-transform: lowercase;
+  body {
+    font-family: "DM sans", sans-serif;
+    background: #f1f0ea;
+    text-transform: lowercase;
     img {
-        width: 100%;
-        display: block;
+      width: 100%;
+      display: block;
     }
 
     a {
-        text-decoration: none;
-        color: inherit;
+      text-decoration: none;
+      color: inherit;
     }
 
-        section {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
 
-            .img {
-                width: 20%;
-                border-radius: 2px;
-                -webkit-border-radius: 2px;
-                -moz-border-radius: 2px;
-                -ms-border-radius: 2px;
-                -o-border-radius: 2px;
-                position: absolute;
-                left:30%;
-                top:40%;
-                transform: translate(-30%, -40%);
-                -webkit-transform: translate(-30%, -40%);
-                -moz-transform: translate(-30%, -40%);
-                -ms-transform: translate(-30%, -40%);
-                -o-transform: translate(-30%, -40%);
-}
-            .hero-text {
-                background: #D8AA7C;
-                width: 50%;
-                padding: 2% 15%;
-                border-radius: 2px;
-                -webkit-border-radius: 2px;
-                -moz-border-radius: 2px;
-                -ms-border-radius: 2px;
-                -o-border-radius: 2px;
-                position: absolute;
-                left:70%;
-                top:55%;
-                transform: translate(-70%, -55%);
-                -webkit-transform: translate(-70%, -55%);
-                -moz-transform: translate(-70%, -55%);
-                -ms-transform: translate(-70%, -55%);
-                -o-transform: translate(-70%, -55%);
-                h1
-{
-                font-family: 'Playfair Display', serif;
-                font-size: 3rem;
-                color:white;
-}
-                .login {
-                    display: flex;
-                    flex-direction: column;
-                    margin-top: 4rem;
-                    input {
-                        margin: 5px 0;
-                        border: none;
-                        padding: 0.5rem;
-                    }
+      .img {
+        width: 20%;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+        position: absolute;
+        left: 30%;
+        top: 40%;
+        transform: translate(-30%, -40%);
+        -webkit-transform: translate(-30%, -40%);
+        -moz-transform: translate(-30%, -40%);
+        -ms-transform: translate(-30%, -40%);
+        -o-transform: translate(-30%, -40%);
+      }
+      .hero-text {
+        background: #d8aa7c;
+        width: 50%;
+        padding: 2% 15%;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+        position: absolute;
+        left: 70%;
+        top: 55%;
+        transform: translate(-70%, -55%);
+        -webkit-transform: translate(-70%, -55%);
+        -moz-transform: translate(-70%, -55%);
+        -ms-transform: translate(-70%, -55%);
+        -o-transform: translate(-70%, -55%);
 
-                    button {
-                        border:none;
-                        background: #534B52;
-                        font-family: inherit;
-                        padding: 1rem 0;
-                        margin-top: 5px;
-                        color: white;
-                        font-weight: bold;
-                        text-transform: inherit;
-                        font-size: 1rem;
-                        letter-spacing: 1px;
-                        cursor: pointer;
-                    }
-                    #register {
-                        width: 20%;
-                        font-size: 0.8rem;
-                        padding: 5px 0;
-                        margin-top: 0;
-                    }
-                }
-}
 
-           
+        h1 {
+          font-family: "Playfair Display", serif;
+          font-size: 3rem;
+          color: white;
         }
+        .login {
+          display: flex;
+          flex-direction: column;
+          margin-top: 4rem;
+          input {
+            margin: 5px 0;
+            border: none;
+            padding: 0.5rem;
+          }
 
-        #products {
-            width: 80%;
-            margin: 0 auto;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
+          button {
+            border: none;
+            background: #534b52;
+            font-family: inherit;
+            padding: 1rem 0;
+            margin-top: 5px;
+            color: white;
+            font-weight: bold;
+            text-transform: inherit;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+          }
+          #register {
+            width: 20%;
+            font-size: 0.8rem;
+            padding: 5px 0;
+            margin-top: 0;
+          }
+        }
+        #logout {
+            font-size: 0.8rem;
+            padding: 1rem;
+            border: none;
+            background: #534b52;
+            font-family: inherit;
+            margin-top: 3rem;
+            color: white;
+            font-weight: bold;
+            text-transform: inherit;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+      }
+    }
 
-            .product-card {
-                width: 30%;
+    #products {
+      width: 80%;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
 
-                .product-img {
-                    position: relative;
-                    overflow: hidden;
-                    max-height: 370px;
+      .product-card {
+        width: 30%;
 
-                    .product-info {
-                        position: absolute;
-                        width: 100%;
-                        background-color: rgba(255,255,255, 0.7);
-                        top:0;
-                        left: 0;
-                        padding: 1rem;
-                        color: #2D232E;
+        .product-img {
+          position: relative;
+          overflow: hidden;
+          max-height: 370px;
 
-                        h3 {
-                            font-size: 2rem;
-                        }
-                    }
+          .product-info {
+            position: absolute;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            top: 0;
+            left: 0;
+            padding: 1rem;
+            color: #2d232e;
 
-                    .add-to-cart {
-                        background: #6987c9c5;
-                        position: absolute;
-                        width: 100%;
-                        bottom:0;
-                        left:0;
-                        padding: 2rem;
-                        text-align: right;
-                        color:white;
-                        text-transform: uppercase;
-                        cursor: pointer;
-
-                        i {
-                            margin-right: 10px;
-                        }
-                      
-}
-                }
+            h3 {
+              font-size: 2rem;
             }
-            
-        }
+          }
 
-       
+          .add-to-cart {
+            background: #6987c9c5;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            padding: 2rem;
+            text-align: right;
+            color: white;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
     }
+  }
 }

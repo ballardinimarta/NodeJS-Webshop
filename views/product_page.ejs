@@ -27,9 +27,14 @@
     <section id="hero">
       <div class="hero-text">
         <h1>plant webshop</h1>
-        <!-- <a href="/logout">Logout</a> -->
+        
+        <%if(cookieLength ===0){%>
+            <%- include ("login_form.ejs") %>
+        <%} else {%>
+         <button id="logout"><a href="/logout">Logout</a></button>
+        <%} %>
 
-        <%- include ("login_form.ejs") %>
+        
       </div>
       <div class="img">
         <img src="../../img/bg1.jpg" alt="" />
