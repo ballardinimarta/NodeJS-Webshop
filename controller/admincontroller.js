@@ -2,8 +2,9 @@ const Product = require("../model/Product");
 
 const adminHomeRender = async(req, res) => {
     try {
+        const user = await User.findOne({_id: req.user.user._id}).populate("myProductList");
         const products = await Product.find();
-        res.render("admin_home.ejs", {products: products, id: " "});
+        res.render("admin_home.ejs", {products: user.myProductList, id: " "});
     } catch (error) {
         console.log(error)
     }

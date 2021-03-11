@@ -7,7 +7,15 @@ const userSchema = new mongoose.Schema({
     role: String,
     token: String,
     tokenExpiration: Date,
+    courseList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product"
+    }]
 })
 
+userSchema.methods.addToMyProductList = function (productId) {
+    this.myProductList.push(productId);
+    this.save();
+}
 const User = mongoose.model('User', userSchema)
 module.exports = User
