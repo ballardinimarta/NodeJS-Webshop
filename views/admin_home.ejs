@@ -9,9 +9,10 @@
     <script src="https://kit.fontawesome.com/8ba7ccfbdc.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <a href="/productPage">&larr; Product page</a>
     <form action="/admin" method="post" id="addform" enctype="multipart/form-data">
         <h2>Add a product!</h2>
-        <input type="file" name="imageurl" />
+        <input type="file" name="imageurl" accept="image/png, image/jpeg"/>
         <input type="text" name="name" id="" placeholder="name" required>
         <input type="number" name="price" id="" placeholder="price" required>
         <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
@@ -22,8 +23,8 @@
         <div id="productwrapper">
             <% for( let i = 0; i < products.length; i++ ) { %>
                 <% if (products[i]._id == id) { %>
-                    <form action="/admin/edit/<%= id %> " method="post" id="editform">
-                        <input type="text" name="image" id="" value="<%= products[i].image %>" required>
+                    <form action="/admin/edit/<%= id %> " method="post" id="editform" enctype="multipart/form-data">
+                        <input type="file" name="imageurl" accept="image/png, image/jpeg"/>
                         <input type="text" name="name" id="" value="<%= products[i].name %>" required>
                         <input type="number" name="price" id="" value="<%= products[i].price %>" required>
                         <textarea name="description" id=""  cols="15" rows="5" ><%= products[i].description %></textarea>
