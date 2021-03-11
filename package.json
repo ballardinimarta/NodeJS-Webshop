@@ -22,5 +22,13 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.19",
     "node-sass-middleware": "^0.11.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ballardinimarta/NodeJS-Webshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ballardinimarta/NodeJS-Webshop/issues"
+  },
+  "homepage": "https://github.com/ballardinimarta/NodeJS-Webshop#readme"
 }

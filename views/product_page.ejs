@@ -1,0 +1,16 @@
+<h1>Hi Welcome to our webshop</h1> <a href="/logout">Logout</a>
+
+<h2>Our products</h2>
+<% products.forEach(product => { %>
+    <div style="border: 1px solid black; width: 80%;"> 
+        <div><%= product.image %></div>
+        <h4><%= product.name %></h4>
+        <h5><%= product.description %></h5>
+        <h3><%= product.price %></h3>
+        <h3>ITEM ID :<%= product.id %></h3>
+        <button>Add to cart</button>
+    </div><br>
+<% }) %>
+
+
+

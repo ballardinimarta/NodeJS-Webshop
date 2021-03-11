@@ -1,0 +1,12 @@
+<form action="/login" method="post"> 
+    <% if(err) { %>
+        <div> <%= err %> </div>
+    <% } %>
+
+    <input type="email" name="email" id="" placeholder="Email">
+    <input type="password" name="password" id="" placeholder="Password">
+    <button type="submit">Login</button>
+
+    <br>
+    <a href="/register">Register</a>
+</form>
