@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/register', registerRender) 
 router.post('/register', registerSubmit) 
 
-router.get('/login', loginRender) 
+//router.get('/login', loginRender) 
 router.post('/login', loginSubmit) 
 
 router.get('/logout', logOut) 
