@@ -1,4 +1,4 @@
-<form action="/login" method="post"> 
+<form action="/login" method="post" class="login"> 
     <% if(err) { %>
         <div> <%= err %> </div>
     <% } %>
@@ -8,5 +8,7 @@
     <button type="submit">Login</button>
 
     <br>
-    <a href="/register">Register</a>
+    <p>Don't have an account?</p>
+    <button id="register"> <a href="/register">Register</a></button>
+   
 </form>
