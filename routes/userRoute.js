@@ -3,10 +3,12 @@ const {adminHomeRender, adminAddProduct, adminEditProductRender, adminEditProduc
 const {registerRender, registerSubmit} = require('../controller/registerController');
 const {loginRender, loginSubmit, logOut} = require('../controller/loginController');
 const verifyTokenAdmin = require("../middleware/verifyUserAdmin")
+const {upload} = require("./../middleware/upload");
+
 const router = express.Router();
 
-router.get("/admin", verifyTokenAdmin, adminHomeRender);
-router.post("/admin", verifyTokenAdmin, adminAddProduct);
+router.get("/admin",verifyTokenAdmin,  adminHomeRender);
+router.post("/admin",verifyTokenAdmin, upload.single("imageurl"),  adminAddProduct);
 
 router.get("/admin/edit/:id",verifyTokenAdmin, adminEditProductRender)
 router.post("/admin/edit/:id",verifyTokenAdmin, adminEditProduct)
