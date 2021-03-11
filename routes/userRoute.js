@@ -1,14 +1,16 @@
 const express = require("express");
-
+const {adminHomeRender, adminAddProduct, adminEditProductRender, adminEditProduct,adminDeleteProduct} = require("../controller/admincontroller");
+const {registerRender, registerSubmit} = require('../controller/registerController');
+const {loginRender, loginSubmit, logOut} = require('../controller/loginController');
 const router = express.Router();
 
-const {registerRender, registerSubmit} = require('../controller/registerController')
-const {loginRender, loginSubmit, logOut} = require('../controller/loginController')
+router.get("/admin", adminHomeRender);
+router.post("/admin", adminAddProduct);
 
+router.get("/admin/edit/:id", adminEditProductRender)
+router.post("/admin/edit/:id", adminEditProduct)
 
-//router.get("/", (req, res) => {
-    //res.send("Webshop");
-//})
+router.get("/admin/delete/:id", adminDeleteProduct)
 
 router.get('/register', registerRender) 
 router.post('/register', registerSubmit) 
