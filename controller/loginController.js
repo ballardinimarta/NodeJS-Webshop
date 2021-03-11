@@ -5,9 +5,7 @@ require('dotenv').config()
 
 
 const loginRender = (req, res) => {
-    
     res.render('login_form.ejs', {err: ''})
-    
 }
 
 const loginSubmit = async (req, res) => {
@@ -18,7 +16,7 @@ const loginSubmit = async (req, res) => {
         if(!user) return res.redirect('/register')
     
         const validUser = await bcrypt.compare(password, user.password) 
-        if(!validUser) return res.redirect('/login')
+        if(!validUser) return res.redirect('/')
 
         const jwToken = await jwt.sign({user: user}, process.env.SECRET_KEY)
         if(jwToken) { 
@@ -28,7 +26,7 @@ const loginSubmit = async (req, res) => {
             }
             return res.redirect('/productPage')
         }
-        return res.redirect('/login')
+        return res.redirect('/')
     }
     catch(err) {
         if(err) 
@@ -43,5 +41,5 @@ const logOut = async (req, res) => {
 module.exports = {
     loginRender,
     loginSubmit,
-    logOut
+    logOut,
 } 

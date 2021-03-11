@@ -32,6 +32,10 @@
             <%- include ("login_form.ejs") %>
         <%} else {%>
          <button id="logout"><a href="/logout">Logout</a></button>
+
+         <%if(loggedAsAdmin) {%>
+         <button id="admin"><a href="/admin">For Admin</a></button>
+         <%} %>
         <%} %>
 
         
@@ -62,10 +66,7 @@
 
     <script>
          
-
       let divLength = products.children.length;
-
-
     for (let i = 0; i < divLength; i++) {
     $(`#link-${i}`)
     .mouseover(() => {

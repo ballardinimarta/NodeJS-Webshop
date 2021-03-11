@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const verifyToken = (req, res, next) => {
     const userToken = req.cookies.jwToken
-    if(!userToken) return res.render('login_form.ejs', {err: "Log in to access the product page"})
+    if(!userToken) return res.redirect('/')
 
     const validUser = jwt.verify(userToken, process.env.SECRET_KEY)
     if(validUser) {
