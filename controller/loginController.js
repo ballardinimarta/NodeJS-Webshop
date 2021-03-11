@@ -5,7 +5,9 @@ require('dotenv').config()
 
 
 const loginRender = (req, res) => {
+    console.log(jwtToken)
     res.render('login_form.ejs', {err: ''})
+    
 }
 
 const loginSubmit = async (req, res) => {
