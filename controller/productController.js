@@ -13,6 +13,16 @@ const productPageRender = async (req, res) => {
     res.render('product_page.ejs', {err: '', products, cookie, cookieLength, loggedAsAdmin})
 }
 
+const productAddToCart = async (req, res) => {
+    const productId = req.params.id
+   
+    const user = await User.findOne({_id: req.user.user._id})
+    user.addToMyShoppingCart(productId) 
+    res.redirect("/productPage")
+}
+
+
 module.exports = {
-    productPageRender
+    productPageRender,
+    productAddToCart,
 } 
