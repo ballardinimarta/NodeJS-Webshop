@@ -60,8 +60,19 @@
           </div>
         </div>
       </div>
-     
+   
       <% }) %>
+      <div class="pagination-container">
+      <% if(totalPages !== productsToShow/productsPerPage) { %>
+        <a href="/showmore/?page=<%= page %>&&totalPages=<%=totalPages%>&&#products"> 
+          <button class="show <%= displayNone %>">Show more</button>
+       </a>
+        <% } else { %>
+        <a href="/showless/?page=<%= page %>&&#products"> 
+           <button class="show <%= displayNone %>">Show less</button>
+        </a>
+        <% } %>
+      </div>
     </section>
 
     <script>
