@@ -64,7 +64,6 @@ const adminDeleteProduct = async (req, res) => {
     try {
         const id = req.params.id;
         await Product.deleteOne({_id: id});
-        setTimeout(function(){ document.getElementById }, 3000);       
     } catch (error) {
         console.log(error);
     }
