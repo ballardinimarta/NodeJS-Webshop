@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoppingcart</title>
+    <script src="https://kit.fontawesome.com/8ba7ccfbdc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style/cart.css">
+</head>
+<body>
+    <a href="/productPage">&larr; Product page</a>
+
+    <div id="cart"">
+    <h2><%= username %>'s Cart</h2>
+    <% if (!shoppingcart.length) { %>
+        <p>Your shoppingcart is empty :(</p>
+        <p><a href="/productPage">Click here to shop!</a></p>
+    <% } else { %>
+        <% shoppingcart.forEach((product) => { %>
+            <div class="cartItem">
+                <img src="<%= product.image %> ">
+                <p><%= product.name %></p>
+                <b><%= product.price %> kr</b>
+                <a href="/cart/delete/<%= product._id %> "><i class="far fa-trash-alt"></i></a>
+            </div>
+        <% }) %>
+        <h3>Totalprice: <%= totalprice %> kr </h3>
+        <button type="button">Proceed to Checkout!</button>
+    <% } %>
+</div> 
+</body>
+</html>
