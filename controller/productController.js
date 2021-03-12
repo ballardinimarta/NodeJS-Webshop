@@ -57,8 +57,18 @@ const showMoreProducts = async (req, res) => {
     await res.redirect("/?page=1");
   };
 
+const productAddToCart = async (req, res) => {
+    const productId = req.params.id
+   
+    const user = await User.findOne({_id: req.user.user._id})
+    user.addToMyShoppingCart(productId) 
+    res.redirect("/productPage")
+}
+
+
 module.exports = {
   productPageRender,
   showMoreProducts,
   showLessProducts,
-};
+  productAddToCart,
+} 
