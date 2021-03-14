@@ -25,10 +25,8 @@ const showProducts = async (req, res) => {
 const deleteProducts = async (req,res) => {
     try {
         const id = req.params.id;
-        console.log(id)
         const user = await User.findOne({_id: req.user.user._id})
         const selectedProduct = await Product.findOne({_id: req.params.id});
-        console.log(selectedProduct)
         user.removeFromMyShoppingCart(selectedProduct);
         res.redirect("/cart");
     } catch (error) {
@@ -36,31 +34,7 @@ const deleteProducts = async (req,res) => {
     }
 }
 
-const plusProducts = async (req, res) => {
-    const productId = req.params.id
-    const user = await User.findOne({_id: req.user.user._id})
-    const selectedProduct = await Product.findOne({_id: req.params.id});
-    let found = false;
-    let productInCart;
-
-    for (let i = 0; i < user.myShoppingCart.length; i++) {
-        if(user.myShoppingCart[i]._id.equals(selectedProduct._id)) {
-            productInCart = user.myShoppingCart[i];
-            found = true;
-            break   
-        } 
-    }
-    if (found) {
-        productInCart.quantity += 1;
-        user.save();
-    } else {
-        user.addToMyShoppingCart(selectedProduct) 
-    }
-    res.redirect("/cart")
-}
-
 const minusProducts = async (req, res) => {
-    const productId = req.params.id
     const user = await User.findOne({_id: req.user.user._id})
     const selectedProduct = await Product.findOne({_id: req.params.id});
     let found = false;
@@ -73,10 +47,12 @@ const minusProducts = async (req, res) => {
             break   
         } 
     }
+   
     if (found) {
         productInCart.quantity -= 1;
         user.save();
-    } else {
+    } 
+    else {
         user.addToMyShoppingCart(selectedProduct) 
        
     }
@@ -86,6 +62,5 @@ const minusProducts = async (req, res) => {
 module.exports = {
     showProducts,
     deleteProducts,
-    plusProducts,
     minusProducts
 }

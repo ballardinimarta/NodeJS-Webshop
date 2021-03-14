@@ -45,7 +45,6 @@ const productPageRender = async (req, res) => {
 const showMoreProducts = async (req, res) => {
     let page = +req.query.page;
     let totalPages = +req.query.totalPages;
-    console.log(page)
     if (totalPages === 0) {
       res.redirect("/");
     }
@@ -57,7 +56,7 @@ const showMoreProducts = async (req, res) => {
   };
 
 const productAddToCart = async (req, res) => {
-    console.log(req.params.origin)
+    
     const productId = req.params.id
     const user = await User.findOne({_id: req.user.user._id})
     const selectedProduct = await Product.findOne({_id: req.params.id});
@@ -77,6 +76,10 @@ const productAddToCart = async (req, res) => {
     } else {
         user.addToMyShoppingCart(selectedProduct) 
     }
+    
+    if (req.query.origin === 'cart') {
+        res.redirect("/cart")
+    } else
     res.redirect("/#products")
 }
 
