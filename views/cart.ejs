@@ -18,10 +18,14 @@
         <p>Your shoppingcart is empty :(</p>
         <p><a href="/productPage">Click here to shop!</a></p>
     <% } else { %>
+      
         <% shoppingcart.forEach((product) => { %>
             <div class="cartItem">
                 <img src="<%= product.image %> ">
                 <p><%= product.name %></p>
+                <a href="/minus/<%=product.id%>"><button>-</button></a>
+                <p><%= product.quantity %></p>
+                <a href="/plus/<%=product.id%>"><button>+</button></a>
                 <b><%= product.price %> kr</b>
                 <a href="/cart/delete/<%= product._id %> "><i class="far fa-trash-alt"></i></a>
             </div>

@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 const productPageRender = async (req, res) => {
   const products = await Product.find()
   const allProducts = await Product.find().countDocuments();
-  console.log(allProducts)
 
   const cookie = req.cookies;
   const cookieLength = Object.keys(cookie).length;
@@ -58,11 +57,27 @@ const showMoreProducts = async (req, res) => {
   };
 
 const productAddToCart = async (req, res) => {
+    console.log(req.params.origin)
     const productId = req.params.id
-   
     const user = await User.findOne({_id: req.user.user._id})
-    user.addToMyShoppingCart(productId) 
-    res.redirect("/productPage")
+    const selectedProduct = await Product.findOne({_id: req.params.id});
+    let found = false;
+    let productInCart;
+
+    for (let i = 0; i < user.myShoppingCart.length; i++) {
+        if(user.myShoppingCart[i]._id.equals(selectedProduct._id)) {
+            productInCart = user.myShoppingCart[i];
+            found = true;
+            break   
+        } 
+    }
+    if (found) {
+        productInCart.quantity += 1;
+        user.save();
+    } else {
+        user.addToMyShoppingCart(selectedProduct) 
+    }
+    res.redirect("/#products")
 }
 
 
