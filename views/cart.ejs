@@ -23,9 +23,15 @@
             <div class="cartItem">
                 <img src="<%= product.image %> ">
                 <p><%= product.name %></p>
+                <!-- Kolla om det bara finns 1 i varukorgen, isåfall ta bort produkten -->
+                <% if (product.quantity === 1) {%>
+                <a href="/cart/delete/<%= product._id %> "><button>-</button></a>
+                <% } else {%>
                 <a href="/minus/<%=product.id%>"><button>-</button></a>
+                <% } %>
                 <p><%= product.quantity %></p>
-                <a href="/plus/<%=product.id%>"><button>+</button></a>
+                <!-- <a href="/plus/<%=product.id%>"><button>+</button></a> -->
+                <a href="/addToCart/<%=product.id%>?origin=cart"><button>+</button></a>
                 <b><%= product.price %> kr</b>
                 <a href="/cart/delete/<%= product._id %> "><i class="far fa-trash-alt"></i></a>
             </div>
