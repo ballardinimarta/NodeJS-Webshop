@@ -1,3 +1,5 @@
+@import "./media-querys";
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +11,7 @@ html {
     font-family: "DM sans", sans-serif;
     background: #f1f0ea;
     text-transform: lowercase;
-    color:#534b52;
+    color: #534b52;
     #cartDiv {
       position: fixed;
       top: 5%;
@@ -68,7 +70,6 @@ html {
         -ms-transform: translate(-70%, -55%);
         -o-transform: translate(-70%, -55%);
 
-
         h1 {
           font-family: "Playfair Display", serif;
           font-size: 3rem;
@@ -104,19 +105,20 @@ html {
             margin-top: 0;
           }
         }
-        #logout, #admin  {
-            font-size: 0.8rem;
-            padding: 1rem;
-            border: none;
-            background: #534b52;
-            font-family: inherit;
-            margin-top: 3rem;
-            color: white;
-            font-weight: bold;
-            text-transform: inherit;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            cursor: pointer;
+        #logout,
+        #admin {
+          font-size: 0.8rem;
+          padding: 1rem;
+          border: none;
+          background: #534b52;
+          font-family: inherit;
+          margin-top: 3rem;
+          color: white;
+          font-weight: bold;
+          text-transform: inherit;
+          font-size: 1rem;
+          letter-spacing: 1px;
+          cursor: pointer;
         }
       }
     }
@@ -124,6 +126,7 @@ html {
     #products {
       width: 80%;
       margin: 0 auto;
+      padding: 3rem 0;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
@@ -131,15 +134,21 @@ html {
       .product-card {
         width: 30%;
         margin-top: 2rem;
-        
+        @include responsive(mobile) {
+          width: 100%
+      }
 
         .product-img {
           position: relative;
           overflow: hidden;
-          max-height: 370px;
-       
-          .product-info
-{
+          width: 25vw;
+          height: 25vw;
+          @include responsive(mobile) {
+            width: 80vw;
+            height: 80vw;
+        }
+
+          .product-info {
             position: absolute;
             width: 100%;
             background-color: rgba(255, 255, 255, 0.7);
@@ -171,43 +180,46 @@ html {
           }
         }
       }
-      .pagination-container{
+      .pagination-container {
         width: 100%;
         display: flex;
         justify-content: center;
-        
-      .show {
-        margin: 5rem 0;
-        border: none;
-        background-color: #6987C9;
-        color: white;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        min-height: 3rem;
-        min-width: 10rem;
-        border-radius: 2px;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        -ms-border-radius: 2px;
-        -o-border-radius: 2px;
-        cursor: pointer;
-        transition: 0.2s all ease;
-        -webkit-transition: 0.2s all ease;
-        -moz-transition: 0.2s all ease;
-        -ms-transition: 0.2s all ease;
-        -o-transition: 0.2s all ease;
-}
-      
-      .show:hover {
-        background-color: #5671ac;
-      }
-      
-      .display-none {
-        display: none;
+
+        .show {
+          margin: 5rem 0;
+          border: none;
+          background-color: #6987c9;
+          color: white;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          min-height: 3rem;
+          min-width: 10rem;
+          border-radius: 2px;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          -ms-border-radius: 2px;
+          -o-border-radius: 2px;
+          cursor: pointer;
+          transition: 0.2s all ease;
+          -webkit-transition: 0.2s all ease;
+          -moz-transition: 0.2s all ease;
+          -ms-transition: 0.2s all ease;
+          -o-transition: 0.2s all ease;
+        }
+
+        .show:hover {
+          background-color: #5671ac;
+        }
+
+        .display-none {
+          display: none;
+        }
       }
     }
-      
+
+    .mini-cart {
+      max-width: 30%;
     }
   }
 }

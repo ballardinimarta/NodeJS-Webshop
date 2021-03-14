@@ -17,24 +17,42 @@ html {
             align-items: center;
             width: 50%;
             .cartItem {
-                height: 150px;
-                width: 100%;
+                width: 70%;
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: flex-start;
                 align-items: center;
                 margin: 20px 0;
-                border: 2px solid #534b52;
+                padding-bottom: 3rem;
+                border-bottom: 1px solid #c9c1c9;
                 font-size: 140%;
                 img {
-                    height: 100%;
+                    width: 15vw;
+                    height: 15vw;
+                    object-fit: cover;
                 }
-                input {
-                    margin: 5px 0;
-                    border: none;
-                    padding: 0.5rem;
-                    width: 5%;
-                  }
+                .cart-info{
+                    margin-left: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .buttons {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        button {
+                            margin: 0 1rem;
+                        }
+                    }
+
+                    .price-trash {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
                 i {
                     padding: 10px;
                 }
