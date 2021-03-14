@@ -11,10 +11,23 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "product"
     }],
-    myShoppingCart: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "product" 
-    }]
+    myShoppingCart: [
+    { name: {type: String},
+    image: {type: String,},
+    price: {type: Number},
+        productId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product",
+        },
+        quantity: {
+            type: Number,
+            required: true,
+            min: [1, 'Quantity can not be less then 1.']
+        }
+    }, {
+        timestamps: true
+    }
+]
 })
 
 userSchema.methods.addToMyProductList = function (productId) {
@@ -25,8 +38,9 @@ userSchema.methods.addToMyShoppingCart = function(productId) {
     this.myShoppingCart.push(productId)
     this.save()
 }
-userSchema.methods.removeFromMyShoppingCart = function(productId) {
-    let index = this.myShoppingCart.indexOf(productId);
+userSchema.methods.removeFromMyShoppingCart = function(selectedProduct) {
+    const isFound = (element) => element._id.equals(selectedProduct._id);
+    let index = this.myShoppingCart.findIndex(isFound);
     this.myShoppingCart.splice(index, 1);
     this.save()
 }

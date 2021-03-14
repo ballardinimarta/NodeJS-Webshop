@@ -16,7 +16,8 @@ const adminAddProduct = async (req,res) => {
             name: req.body.name,
             image: "/uploads/" + req.file.filename,
             description: req.body.description,
-            price: req.body.price
+            price: req.body.price,
+            quantity: 1
         }).save();
         user.addToMyProductList(product._id);
         res.redirect("/admin")
