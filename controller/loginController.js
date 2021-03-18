@@ -8,7 +8,7 @@ const loginRender = (req, res) => {
     res.render('login_form.ejs', {err: ''})
 }
 
-const loginSubmit = async (req, res) => {
+const loginSubmit = async (req, res, next) => {
     const {email, password} = req.body 
 
     try {
@@ -16,7 +16,7 @@ const loginSubmit = async (req, res) => {
         if(!user) return res.redirect('/register')
     
         const validUser = await bcrypt.compare(password, user.password) 
-        if(!validUser) return res.redirect('/')
+        if(!validUser) return next(err)
 
         const jwToken = await jwt.sign({user: user}, process.env.SECRET_KEY)
         if(jwToken) { 
@@ -29,8 +29,7 @@ const loginSubmit = async (req, res) => {
         return res.redirect('/')
     }
     catch(err) {
-        if(err) 
-        return res.render('login_form.ejs', {err: err})
+        res.redirect('/?' + 'err')
     }
 } 
 

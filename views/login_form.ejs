@@ -1,14 +1,15 @@
 <form action="/login" method="post" class="login"> 
-    <% if(err) { %>
-        <div> <%= err %> </div>
+    <% if(Object.keys(reqQuery).length > 0) {%>
+    <p>Wrong e-mail or password.</p> <br>
     <% } %>
 
-    <input type="email" name="email" id="" placeholder="Email">
-    <input type="password" name="password" id="" placeholder="Password">
-    <button type="submit">Login</button>
 
-    <br>
-    <p>Don't have an account?</p>
-    <button id="register"> <a href="/register">Register</a></button>
-   
+<input type="email" name="email" id="" placeholder="Email">
+<input type="password" name="password" id="" placeholder="Password">
+<button type="submit">Login</button>
+
+<br>
+<p>Don't have an account?</p>
+<button id="register"> <a href="/register">Register</a></button>
+
 </form>
