@@ -19,7 +19,7 @@ const registerSubmit = async (req, res) => {
             password: hashedPassword
         }).save()
         
-        return res.redirect('/login') 
+        return res.redirect('/') 
     }
     catch(err) {
         if(err) 
