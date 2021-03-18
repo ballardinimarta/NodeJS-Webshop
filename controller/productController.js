@@ -30,7 +30,8 @@ const productPageRender = async (req, res) => {
         productsToShow,
         productsPerPage,
         displayNone,
-        page
+        page,
+        reqQuery: req.query
       });
     });
 
