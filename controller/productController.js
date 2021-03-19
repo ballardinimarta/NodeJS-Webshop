@@ -49,11 +49,11 @@ const showMoreProducts = async (req, res) => {
     if (totalPages === 0) {
       res.redirect("/");
     }
-    await res.redirect("/?page=" + (page + 1));
+    await res.redirect("/productPage/?page=" + (page + 1));
   };
   
   const showLessProducts = async (req, res) => {
-    await res.redirect("/?page=1");
+    await res.redirect("/productPage/?page=1");
   };
 
 const productAddToCart = async (req, res) => {
@@ -81,7 +81,7 @@ const productAddToCart = async (req, res) => {
     if (req.query.origin === 'cart') {
         res.redirect("/cart")
     } else
-    res.redirect("/#products")
+    res.redirect("/productPage/#products")
 }
 
 

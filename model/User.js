@@ -34,6 +34,12 @@ userSchema.methods.addToMyProductList = function (productId) {
     this.myProductList.push(productId);
     this.save();
 }
+
+userSchema.methods.removeFromMyProductList = function (productId) {
+    let index = this.myProductList.indexOf(productId);
+    this.myProductList.splice(index, 1);
+    this.save();
+}
 userSchema.methods.addToMyShoppingCart = function(productId) {
     this.myShoppingCart.push(productId)
     this.save()

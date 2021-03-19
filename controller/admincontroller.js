@@ -63,8 +63,13 @@ const adminEditProduct = async (req,res) => {
 
 const adminDeleteProduct = async (req, res) => {
     try {
+        const user = await User.findOne({_id: req.user.user._id});
         const id = req.params.id;
+
+        user.removeFromMyProductList(id);
         await Product.deleteOne({_id: id});
+        
+        res.redirect("/admin")
     } catch (error) {
         console.log(error);
     }

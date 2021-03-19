@@ -24,11 +24,14 @@
     ></script>
   </head>
   <body>
-      <div id="cartDiv">
+    <% if (cookieLength > 0) { %>
+     <div id="cartDiv">
         <a href="/cart">
           <i id="cartIcon" class="fas fa-shopping-cart"></i>
         </a>
       </div>
+    <% } %>
+      
 
     <section id="hero">
       <div class="hero-text">
