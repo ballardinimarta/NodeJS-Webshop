@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "product"
     }],
+    myWishList: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product"
+    }],
     myShoppingCart: [
     { name: {type: String},
     image: {type: String,},
@@ -40,6 +44,20 @@ userSchema.methods.removeFromMyProductList = function (productId) {
     this.myProductList.splice(index, 1);
     this.save();
 }
+
+
+userSchema.methods.addToMyWishList = function (productId) {
+    this.myWishList.push(productId);
+    this.save();
+}
+
+userSchema.methods.removeFromMyWishList = function (productId) {
+    let index = this.myWishList.indexOf(productId);
+    this.myWishList.splice(index, 1);
+    this.save();
+}
+
+
 userSchema.methods.addToMyShoppingCart = function(productId) {
     this.myShoppingCart.push(productId)
     this.save()

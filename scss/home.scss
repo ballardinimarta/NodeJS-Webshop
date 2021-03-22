@@ -19,6 +19,13 @@ html {
       font-size: 150%;
       z-index: 1;
     }
+    #wishlistDiv {
+      position: fixed;
+      top: 5%;
+      right: 6%;
+      font-size: 150%;
+      z-index: 1;
+    }
     img {
       width: 100%;
       display: block;
@@ -165,15 +172,33 @@ html {
           .add-to-cart {
             background: #6987c9c5;
             position: absolute;
-            width: 100%;
+            width: 50%;
             bottom: 0;
-            left: 0;
+            right: 0;
             padding: 2rem;
             text-align: right;
             color: white;
             text-transform: uppercase;
+            height: 35%;
             cursor: pointer;
 
+            i {
+              margin-right: 10px;
+            }
+          }
+          .add-to-wishlist {
+            background: #6987c9c5;
+            position: absolute;
+            width: 50%;
+            bottom: 0;
+            left: 0;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            height: 35%;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 150%;
             i {
               margin-right: 10px;
             }

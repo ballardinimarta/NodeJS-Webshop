@@ -7,6 +7,7 @@ const userRoute = require("./routes/userRoute")
 const adminRoute = require("./routes/adminRoute")
 const productRoute = require("./routes/productRoute")
 const cartRoute = require("./routes/cartRoute");
+const wishlistRoute = require("./routes/wishlistRoute");
 
 require("dotenv").config();
 
@@ -32,6 +33,7 @@ app.set("view engine", "ejs");
 app.use("/", userRoute);
 app.use("/", adminRoute);
 app.use("/", cartRoute);
+app.use("/", wishlistRoute);
 
 app.use(productRoute);
 
