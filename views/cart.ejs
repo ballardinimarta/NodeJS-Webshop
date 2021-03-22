@@ -42,7 +42,18 @@
             </div>
         <% }) %>
         <h3>Totalprice: <%= totalprice %> kr </h3>
-        <button type="button">Proceed to Checkout!</button>
+        <form action="payment" method="POST"> 
+            <script
+                src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="<%= process.env.STRIPE_PUBLIC_KEY %>" 
+                data-amount="<%= totalprice *100 %>" 
+                data-currency="SEK" 
+                data-name="<%= username %>" 
+                data-description="Buy your order" 
+                data-locale="auto" > 
+                </script> 
+            </form> 
     <% } %>
 </div> 
 </body>

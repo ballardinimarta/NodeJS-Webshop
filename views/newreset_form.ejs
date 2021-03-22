@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="/style/register.css">
+
+<form action="/newReset" method="post"> 
+
+    <input type="password" name="password" id="" placeholder="New password">
+    <input type="email" name="email" id="" value="<%= email %>" hidden> <!--HIDE FROM USER, WE TAKE THE EMAIL IN VALUE TO DO THE RESET IN CONTROLLER-->
+    <button type="submit">Reset</button>
+     
+</form>
