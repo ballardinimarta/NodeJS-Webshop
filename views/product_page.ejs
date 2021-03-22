@@ -30,6 +30,11 @@
           <i id="cartIcon" class="fas fa-shopping-cart"></i>
         </a>
       </div>
+      <div id="wishlistDiv">
+        <a href="/wishlist">
+          <i id="wishlistIcon" class="fas fa-heart"></i>
+        </a>
+      </div>
     <% } %>
       
 
@@ -67,6 +72,9 @@
           <div class="add-to-cart" id="add-<%=i%>" style="display:none;">
             <a href="/addToCart/<%=product.id%>"><i class="fas fa-shopping-basket"></i> Add to cart</a>
           </div>
+          <div class="add-to-wishlist" id="wish-<%=i%>" style="display:none;">
+            <a href="/addToWishlist/<%=product.id%>"><i class="fas fa-heart"></i></a>
+          </div>
         </div>
       </div>
    
@@ -92,9 +100,13 @@
     $(`#link-${i}`)
     .mouseover(() => {
       $(`#add-${i}`).show();
+      $(`#wish-${i}`).show();
+
     })
     .mouseout(() => {
       $(`#add-${i}`).hide();
+      $(`#wish-${i}`).hide();
+
     });
       
 }

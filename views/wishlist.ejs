@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <script src="https://kit.fontawesome.com/8ba7ccfbdc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style/cart.css">
+</head>
+<body>
+    <a href="/productPage">&larr; Product page</a>
+
+    <div id="cart">
+    <h2><%= username %>'s Wishlist</h2>
+    <% if (!wishlist.length) { %>
+        <p>Your wishlist is empty :(</p>
+        <p><a href="/productPage">Click here to see our products!</a></p>
+    <% } else { %>
+      
+        <% wishlist.forEach((product) => { %>
+            <div class="cartItem">
+                <img src="<%= product.image %> ">
+                <div class="cart-info">
+                <p><%= product.name %></p>
+                <div class="price-trash">
+                    <b><%= product.price %> kr</b>
+                    <a href="/wishlist/delete/<%= product._id %> "><i class="far fa-trash-alt"></i></a>
+                    <a href="/wishlist/addtocart/<%= product._id %>"><i class="fas fa-cart-plus"></i></a>
+                </div>  
+            </div>
+            </div>
+        <% }) %>
+    <% } %>
+</div> 
+</body>
+</html>

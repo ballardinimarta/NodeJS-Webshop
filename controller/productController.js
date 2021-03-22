@@ -80,8 +80,11 @@ const productAddToCart = async (req, res) => {
     
     if (req.query.origin === 'cart') {
         res.redirect("/cart")
-    } else
-    res.redirect("/productPage/#products")
+    } else if (req.query.origin === 'wishlist') {
+      res.redirect("/wishlist")
+    } else {
+      res.redirect("/productPage/#products")
+    }
 }
 
 
