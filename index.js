@@ -7,6 +7,9 @@ const userRoute = require("./routes/userRoute")
 const adminRoute = require("./routes/adminRoute")
 const productRoute = require("./routes/productRoute")
 const cartRoute = require("./routes/cartRoute");
+const paymentRoute = require("./routes/paymentRoute");
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
 
 require("dotenv").config();
 
@@ -32,6 +35,7 @@ app.set("view engine", "ejs");
 app.use("/", userRoute);
 app.use("/", adminRoute);
 app.use("/", cartRoute);
+app.use("/", paymentRoute);
 
 app.use(productRoute);
 
@@ -39,7 +43,7 @@ app.use(productRoute);
 mongoose.connect(process.env.DATABASE_URL, 
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
     }, (err) => {
         if (err) return 
         app.listen(process.env.PORT, ()=> {
