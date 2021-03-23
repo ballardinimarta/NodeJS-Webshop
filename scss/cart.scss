@@ -70,6 +70,14 @@ html {
                 letter-spacing: 1px;
                 cursor: pointer;
               }
+              .payment-form {
+                  display: flex;
+                  flex-direction: column;
+
+                  input {
+                      margin: .5rem 0;
+                  }
+              }
         }
     }
 }

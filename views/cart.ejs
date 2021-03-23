@@ -42,19 +42,37 @@
             </div>
         <% }) %>
         <h3>Totalprice: <%= totalprice %> kr </h3>
-        <form action="payment" method="POST"> 
+        <form action="payment" method="POST" class="payment-form"> 
+            <input type="text" placeholder="street" name="street">
+            <input type="number" placeholder="zip" name="zip">
+            <input type="text" placeholder="city" name="city">
+            <input type="text" placeholder="country" name="country">
             <script
                 src="//checkout.stripe.com/v2/checkout.js"
                 class="stripe-button"
                 data-key="<%= process.env.STRIPE_PUBLIC_KEY %>" 
                 data-amount="<%= totalprice *100 %>" 
                 data-currency="SEK" 
-                data-name="<%= username %>" 
-                data-description="Buy your order" 
+                data-name="Hello <%= username %>." 
+                data-description="Please fill out your payment information." 
                 data-locale="auto" > 
                 </script> 
             </form> 
     <% } %>
 </div> 
+<style>
+    .stripe-button-el {
+        border-radius: 1px;
+    }
+
+    .stripe-button-el span {
+        box-shadow: none;
+        text-shadow: none;
+        background-image: none;
+        border:none;
+        background-color: inherit;
+    }
+    
+</style>
 </body>
 </html>
