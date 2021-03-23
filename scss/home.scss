@@ -18,6 +18,14 @@ html {
       right: 2%;
       font-size: 150%;
       z-index: 1;
+      button {
+        border: none;
+        background-color: transparent;
+        color: inherit;
+        i {
+          font-size: 180%;
+        }
+      }
     }
     #wishlistDiv {
       position: fixed;
@@ -25,6 +33,45 @@ html {
       right: 6%;
       font-size: 150%;
       z-index: 1;
+      button {
+        border: none;
+        background-color: transparent;
+        color: inherit;
+        i {
+          font-size: 180%;
+        }
+      }
+    }
+    #miniWishlist, #miniCart {
+      z-index: 1;
+      background-color: #f1f0ea;
+      border: 3px solid #534b52;
+      width: 25%;
+      position: fixed;
+      top: 10%;
+      right: 5%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        padding: 5%;
+
+        img {
+          width: 25%;
+          height: 25%;
+        }
+      }
+      a {
+        font-size: 120%;
+        border-bottom: 2px solid #534b52;
+        margin-bottom: 5%;
+      }
     }
     img {
       width: 100%;
