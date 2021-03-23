@@ -15,12 +15,20 @@ const productPageRender = async (req, res) => {
   const totalPages = Math.ceil(allProducts / productsPerPage);
   const productsToShow = productsPerPage * page;
 
+  const wishlistuser = await User.findOne({_id: req.user.user._id}).populate("myWishList");
+  const wishlist = wishlistuser.myWishList;
+
+  const cartuser = await User.findOne({_id: req.user.user._id}).populate("myShoppingCart");
+  const cart = cartuser.myShoppingCart;
+
   const loggedAsAdmin = req.user && req.user.user.role;
   await Product.find()
   .limit(productsToShow)
   .exec(function (err, products) {
     res.render("product_page.ejs", {
         err: "",
+        cart,
+        wishlist,
         products,
         cookie,
         cookieLength,
