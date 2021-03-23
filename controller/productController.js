@@ -5,6 +5,11 @@ let displayNone = ""
 const jwt = require("jsonwebtoken");
 
 const productPageRender = async (req, res) => {
+  let wishlistuser;
+  let wishlist;
+  let cartuser;
+  let cart;
+
   const products = await Product.find()
   const allProducts = await Product.find().countDocuments();
 
@@ -14,12 +19,15 @@ const productPageRender = async (req, res) => {
   const productsPerPage = 6;
   const totalPages = Math.ceil(allProducts / productsPerPage);
   const productsToShow = productsPerPage * page;
+  
 
-  const wishlistuser = await User.findOne({_id: req.user.user._id}).populate("myWishList");
-  const wishlist = wishlistuser.myWishList;
+  if (cookieLength > 0) {
+    wishlistuser = await User.findOne({_id: req.user.user._id}).populate("myWishList");
+    wishlist = wishlistuser.myWishList;
 
-  const cartuser = await User.findOne({_id: req.user.user._id}).populate("myShoppingCart");
-  const cart = cartuser.myShoppingCart;
+    cartuser = await User.findOne({_id: req.user.user._id}).populate("myShoppingCart");
+    cart = cartuser.myShoppingCart;
+  }
 
   const loggedAsAdmin = req.user && req.user.user.role;
   await Product.find()
