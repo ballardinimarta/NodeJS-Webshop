@@ -19,13 +19,12 @@ const checkoutClicked = async (req, res) => {
     stripe.customers.create({ 
         email: req.body.stripeEmail, 
         source: req.body.stripeToken, 
-        name: 'Gautam Sharma', 
+        name: user.username, 
         address: { 
-            line1: 'TC 9/4 Old MES colony', 
-            postal_code: '110092', 
-            city: 'New Delhi', 
-            state: 'Delhi', 
-            country: 'India', 
+            line1: req.body.street, 
+            postal_code: req.body.zip, 
+            city: req.body.city, 
+            country: req.body.country
         } 
     }) 
     .then((customer) => { 
@@ -38,7 +37,7 @@ const checkoutClicked = async (req, res) => {
     .then((charge) => { 
         user.myShoppingCart = []
         user.save();
-        res.send("Success") // If no error occurs 
+        res.render('success.ejs',{user}) // If no error occurs 
     }) 
     .catch((err) => { 
         res.send(err)    // If some error occurs 
