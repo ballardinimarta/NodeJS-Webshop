@@ -62,8 +62,8 @@ const checkoutClicked = async (req, res) => {
 
         let orderedProductHtml = user.myShoppingCart.map(product => {
             return `<div>
-            <b>${product.name}</b>
-            <span>${ product.price } :-</span>
+            <i>${product.name}</i>
+            <i>${ product.price } :-</i>
           </div>`;
         }).join("")
 
@@ -73,7 +73,7 @@ const checkoutClicked = async (req, res) => {
         await mailTransporter.sendMail({
             from: process.env.RESET_EMAIL,
             to: user.email,
-            subject: "Your order confirmation",
+            subject: "Your order confirmation, Plant Webshop",
             html: `<h2>Hello from Plant Webshop</h2></br>
             <h3>This is the email confirmation that we have received your orders</h3>` + orderedProductHtml + `<b>Total price : ${totalprice}</b>`
         })
