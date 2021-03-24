@@ -38,8 +38,8 @@ const resetSubmit = async (req, res) => {
         await mailTransporter.sendMail({
             from: process.env.RESET_EMAIL,
             to: user.email,
-            subject: "Reset your password",
-            html: `<h2>Hello from Plant Websho</h2></br><h3>Please click on the link <a href="http://localhost:${process.env.PORT}/reset/${user.token}" > Here</a> to reset your new password</h3>`
+            subject: "Reset your password, Plant Webshop",
+            html: `<h2>Hello from Plant Webshop</h2></br><h3>Please click on the link <a href="http://localhost:${process.env.PORT}/reset/${user.token}" > Here</a> to reset your new password</h3>`
         })
         res.render('checkmail.ejs')
     }
