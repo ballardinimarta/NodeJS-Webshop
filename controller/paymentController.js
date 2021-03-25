@@ -1,17 +1,20 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const User = require("../model/User");
 const nodemailer = require('nodemailer')
+require('dotenv').config();
+
 
 const mailTransporter = nodemailer.createTransport({
     // CRUDENTIAL 
-    host: 'smtp.zoho.eu',
-    port: 465,
-    secure: true,
+    host: process.env.EMAIL_SERVICE,
+    port: process.env.EMAIL_PORT,
+    secure: true, 
     auth: {
-        user: process.env.RESET_EMAIL,
-        pass: process.env.RESET_PASSWORD,
+      user: process.env.RESET_EMAIL,
+      pass: process.env.RESET_PASSWORD
     }
 })
+
 
 const checkoutClicked = async (req, res) => {
     let totalprice;

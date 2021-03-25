@@ -3,19 +3,20 @@ const bcrypt = require('bcrypt')
 const crypto = require('crypto') 
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken') 
-require('dotenv').config()
+require('dotenv').config();
 
 
 const mailTransporter = nodemailer.createTransport({
     // CRUDENTIAL 
-    host: 'smtp.zoho.eu',
-    port: 465,
-    secure: true,
+    host: process.env.EMAIL_SERVICE,
+    port: process.env.EMAIL_PORT,
+    secure: true, 
     auth: {
-        user: process.env.RESET_EMAIL,
-        pass: process.env.RESET_PASSWORD,
+      user: process.env.RESET_EMAIL,
+      pass: process.env.RESET_PASSWORD
     }
 })
+
 
 const resetRender = (req, res) => {
     res.render('reset_form.ejs', {err: ''})
