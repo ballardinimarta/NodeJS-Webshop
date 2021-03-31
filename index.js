@@ -10,8 +10,6 @@ const cartRoute = require("./routes/cartRoute");
 const wishlistRoute = require("./routes/wishlistRoute");
 const paymentRoute = require("./routes/paymentRoute");
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
-
-
 require("dotenv").config();
 
 
@@ -38,8 +36,7 @@ app.use("/", adminRoute);
 app.use("/", cartRoute);
 app.use("/", wishlistRoute);
 app.use("/", paymentRoute);
-
-app.use(productRoute);
+app.use("/", productRoute);
 
 
 mongoose.connect(process.env.DATABASE_URL, 

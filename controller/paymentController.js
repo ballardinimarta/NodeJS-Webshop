@@ -5,7 +5,6 @@ require('dotenv').config();
 
 
 const mailTransporter = nodemailer.createTransport({
-    // CRUDENTIAL 
     host: process.env.EMAIL_SERVICE,
     port: process.env.EMAIL_PORT,
     secure: true, 

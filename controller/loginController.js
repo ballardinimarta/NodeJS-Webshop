@@ -4,10 +4,6 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 
-const loginRender = (req, res) => {
-    res.render('login_form.ejs', {err: ''})
-}
-
 const loginSubmit = async (req, res, next) => {
     const {email, password} = req.body 
 
@@ -38,7 +34,6 @@ const logOut = async (req, res) => {
 }
 
 module.exports = {
-    loginRender,
     loginSubmit,
     logOut,
 } 

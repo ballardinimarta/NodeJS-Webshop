@@ -24,7 +24,6 @@ const showProducts = async (req, res) => {
 
 const deleteProducts = async (req,res) => {
     try {
-        const id = req.params.id;
         const user = await User.findOne({_id: req.user.user._id})
         const selectedProduct = await Product.findOne({_id: req.params.id});
         user.removeFromMyShoppingCart(selectedProduct);
