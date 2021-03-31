@@ -1,7 +1,7 @@
 const verifyTokenAdmin = require("../middleware/verifyUserAdmin")
 const {upload} = require("./../middleware/upload");
 const express = require("express");
-const {adminHomeRender, adminAddProduct, adminEditProductRender, adminEditProduct,adminDeleteProduct} = require("../controller/admincontroller");
+const {adminHomeRender, adminAddProduct, adminEditProductRender, adminEditProduct,adminDeleteProduct} = require("../controller/adminController");
 const router = express.Router();
 
 router.get("/admin",verifyTokenAdmin,  adminHomeRender);
