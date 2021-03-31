@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="../../style/admin.css">
+    <script src="https://kit.fontawesome.com/8ba7ccfbdc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="/productPage">&larr; Product page</a>
+    <form action="/admin" method="post" id="addform" enctype="multipart/form-data">
+        <h2>Add a product!</h2>
+        <input type="file" name="imageurl" accept="image/png, image/jpeg"/>
+        <input type="text" name="name" id="" placeholder="name" required>
+        <input type="number" name="price" id="" placeholder="price" required>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="description"></textarea>
+        <button type="submit">Add product!</button>
+    </form>
+    <div id="productcontainer"> 
+        <h2>My Products</h2>
+        <div id="productwrapper">
+            <% for( let i = 0; i < products.length; i++ ) { %>
+                <% if (products[i]._id == id) { %>
+                    <form action="/admin/edit/<%= id %> " method="post" id="editform" enctype="multipart/form-data">
+                        <input type="file" name="imageurl" accept="image/png, image/jpeg"/>
+                        <input type="text" name="name" id="" value="<%= products[i].name %>" required>
+                        <input type="number" name="price" id="" value="<%= products[i].price %>" required>
+                        <textarea name="description" id=""  cols="15" rows="5" ><%= products[i].description %></textarea>
+                        <button type="submit">Edit product!</button>
+                    </form>
+                <% } else { %>
+                <div>
+                    <img style="height: 200px;" src="<%= products[i].image %> ">
+                    <h3><%= products[i].name %></h3>
+                    <p><%= products[i].price %> kr</p>
+                    <p><%= products[i].description %></p>
+                    <a href="/admin/edit/<%= products[i]._id %> "><i class="far fa-edit"></i></a>
+                    <a href="/admin/delete/<%= products[i]._id %> "><i class="far fa-trash-alt"></i></a>
+    
+                </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    
+        
+</body>
+</html>

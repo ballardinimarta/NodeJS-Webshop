@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoppingcart</title>
+    <script src="https://kit.fontawesome.com/8ba7ccfbdc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style/cart.css">
+</head>
+<body>
+    <a href="/productPage">&larr; Product page</a>
+
+    <div id="cart"">
+    <h2><%= username %>'s Cart</h2>
+    <% if (!shoppingcart.length) { %>
+        <p>Your shoppingcart is empty :(</p>
+        <p><a href="/productPage">Click here to shop!</a></p>
+    <% } else { %>
+      
+        <% shoppingcart.forEach((product) => { %>
+            <div class="cartItem">
+                <img src="<%= product.image %> ">
+                <div class="cart-info">
+                <p><%= product.name %></p>
+                <!-- Kolla om det bara finns 1 i varukorgen, isåfall ta bort produkten -->
+                <div class="buttons">
+                <% if (product.quantity === 1) {%>
+                <a href="/cart/delete/<%= product._id %> "><button>-</button></a>
+                <% } else {%>
+                <a href="/minus/<%=product.id%>"><button>-</button></a>
+                <% } %>
+                <p><%= product.quantity %></p>
+                <a href="/addToCart/<%=product.id%>?origin=cart"><button>+</button></a>
+            </div>
+            <div class="price-trash">
+                <b><%= product.price %> kr</b>
+                <a href="/cart/delete/<%= product._id %> "><i class="far fa-trash-alt"></i></a>
+            </div>  
+            </div>
+            </div>
+        <% }) %>
+        <h3>Totalprice: <%= totalprice %> kr </h3>
+        <form action="payment" method="POST" class="payment-form"> 
+            <input type="text" placeholder="street" name="street">
+            <input type="number" placeholder="zip" name="zip">
+            <input type="text" placeholder="city" name="city">
+            <input type="text" placeholder="country" name="country">
+            <script
+                src="//checkout.stripe.com/v2/checkout.js"
+                class="stripe-button"
+                data-key="<%= process.env.STRIPE_PUBLIC_KEY %>" 
+                data-amount="<%= totalprice *100 %>" 
+                data-currency="SEK" 
+                data-name="Hello <%= username %>." 
+                data-description="Please fill out your payment information." 
+                data-locale="auto" > 
+                </script> 
+            </form> 
+    <% } %>
+</div> 
+<style>
+    .stripe-button-el {
+        border-radius: 1px;
+    }
+
+    .stripe-button-el span {
+        box-shadow: none;
+        text-shadow: none;
+        background-image: none;
+        border:none;
+        background-color: inherit;
+    }
+    
+</style>
+</body>
+</html>

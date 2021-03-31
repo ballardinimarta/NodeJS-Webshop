@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/style/register.css">
+
+<form action="/register" method="post"> 
+    <h3>Register</h3>
+    <% if(err) { %>
+        <div> <%= err %> </div>
+    <% } %>
+
+    <input type="text" name="username" id="" placeholder="Username" required>
+    <input type="email" name="email" id="" placeholder="Email" required>
+    <input type="password" name="password" id="" placeholder="Password" minlength="5" maxlength="30" required>
+    <button type="submit">Register</button>
+    
+    <p>Already have an account? </p><a href="/">Login <u>here</u></a> 
+</form>

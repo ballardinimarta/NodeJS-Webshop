@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="/style/register.css">
+
+<form action="/reset" method="post"> 
+
+    <% if(err) { %>
+        <div> <%= err %> </div>
+    <% } %>
+
+    <input type="email" name="email" id="" placeholder="Email">
+    <button type="submit">Send the link</button>
+</form>

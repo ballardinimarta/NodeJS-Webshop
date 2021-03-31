@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plants</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../style/home.css" />
+    <script
+      src="https://kit.fontawesome.com/8ba7ccfbdc.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <% if (cookieLength > 0) { %>
+      <div id="cartDiv">
+        <button id="cartButton" type="button"><i id="cartIcon" class="fas fa-shopping-cart"></i></button>
+      </div>
+      <div id="miniCart" style="display: none;">
+        <h2>Cart</h2>
+        <% cart.forEach(product => { %>
+         <div>
+           <img src="<%= product.image %> ">
+           <b><%= product.name %></b>
+           <span><%= product.price %> :-</span>
+         </div>
+        <% }) %>
+        <a href="/cart">Go to cart</a>
+      </div>
+
+      <div id="wishlistDiv">
+        <button id="wishlistButton" type="button"><i id="wishlistIcon" class="fas fa-heart"></i></button>
+      </div>
+      <div id="miniWishlist" style="display: none;">
+        <h2>Wishlist</h2>
+        <% wishlist.forEach(product => { %>
+         <div>
+           <img src="<%= product.image %> ">
+           <b><%= product.name %></b>
+           <span><%= product.price %> :-</span>
+         </div>
+        <% }) %>
+        <a href="/wishlist">Go to wishlist</a>
+      </div>
+    <% } %>
+      
+
+    <section id="hero">
+      <div class="hero-text">
+        <h1>plant webshop</h1>
+        
+        <%if(cookieLength ===0){%>
+            <%- include ("login_form.ejs") %>
+        <%} else {%>
+         <button id="logout"><a href="/logout">Logout</a></button>
+
+         <%if(loggedAsAdmin) {%>
+         <button id="admin"><a href="/admin">For Admin</a></button>
+         <%} %>
+        <%} %>
+
+        
+      </div>
+      <div class="img">
+        <img src="../../img/bg1.jpg" alt="" />
+      </div>
+    </section>
+
+    <section id="products">
+      <% products.forEach((product, i) => { %>
+      <div class="product-card" id="link-<%=i%>">
+        <div class="product-img">
+          <img src="<%= product.image %>" alt=""/>
+          <div class="product-info">
+            <h3><%= product.name %></h3>
+            <h4><%= product.price %> :-</h4>
+            <h3 style="display: none">ITEM ID :<%= product.id %></h3>
+          </div>
+          <div class="add-to-cart" id="add-<%=i%>" style="display:none;">
+            <a href="/addToCart/<%=product.id%>"><i class="fas fa-shopping-basket"></i> Add to cart</a>
+          </div>
+          <div class="add-to-wishlist" id="wish-<%=i%>" style="display:none;">
+            <a href="/addToWishlist/<%=product.id%>"><i class="fas fa-heart"></i></a>
+          </div>
+        </div>
+      </div>
+   
+      <% }) %>
+      <div class="pagination-container">
+      <% if(totalPages !== productsToShow/productsPerPage) { %>
+        <a href="/showmore/?page=<%= page %>&&totalPages=<%=totalPages%>&&#products"> 
+          <button class="show <%= displayNone %>">Show more</button>
+       </a>
+        <% } else { %>
+        <a href="/showless/?page=<%= page %>&&#products"> 
+           <button class="show <%= displayNone %>">Show less</button>
+        </a>
+        <% } %>
+      </div>
+    </section>
+    
+
+    <script>
+         
+      let divLength = products.children.length;
+    for (let i = 0; i < divLength; i++) {
+    $(`#link-${i}`)
+    .mouseover(() => {
+      $(`#add-${i}`).show();
+      $(`#wish-${i}`).show();
+
+    })
+    .mouseout(() => {
+      $(`#add-${i}`).hide();
+      $(`#wish-${i}`).hide();
+
+    });
+      
+    }
+
+    document.getElementById("wishlistButton").addEventListener('click', () => {
+      if (document.getElementById("miniWishlist").style.display === "none") {
+        document.getElementById("miniWishlist").style.display = "flex";
+      } else {
+        document.getElementById("miniWishlist").style.display = "none";
+
+      }
+    })
+
+    document.getElementById("cartButton").addEventListener('click', () => {
+      if (document.getElementById("miniCart").style.display === "none") {
+        document.getElementById("miniCart").style.display = "flex";
+      } else {
+        document.getElementById("miniCart").style.display = "none";
+
+      }
+    })
+    </script>
+  </body>
+</html>

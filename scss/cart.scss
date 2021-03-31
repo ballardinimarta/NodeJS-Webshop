@@ -1,0 +1,83 @@
+html {
+    body {
+        font-family: "DM sans", sans-serif;
+        background: #f1f0ea;
+        text-transform: lowercase;
+        color:#534b52;
+        display: flex;
+        justify-content: center;
+        a {
+            list-style-type: none;
+            color: inherit;
+        }
+        #cart {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 50%;
+            .cartItem {
+                width: 70%;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 20px 0;
+                padding-bottom: 3rem;
+                border-bottom: 1px solid #c9c1c9;
+                font-size: 140%;
+                img {
+                    width: 15vw;
+                    height: 15vw;
+                    object-fit: cover;
+                }
+                .cart-info{
+                    margin-left: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .buttons {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        button {
+                            margin: 0 1rem;
+                        }
+                    }
+
+                    .price-trash {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+                i {
+                    padding: 10px;
+                }
+            }
+            button {
+                border: none;
+                background: #534b52;
+                font-family: inherit;
+                padding: 1rem ;
+                margin-top: 5px;
+                color: white;
+                font-weight: bold;
+                text-transform: inherit;
+                font-size: 1rem;
+                letter-spacing: 1px;
+                cursor: pointer;
+              }
+              .payment-form {
+                  display: flex;
+                  flex-direction: column;
+
+                  input {
+                      margin: .5rem 0;
+                  }
+              }
+        }
+    }
+}
